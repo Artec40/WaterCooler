@@ -1,0 +1,35 @@
+//todo Бэкграунд изображение нужно перенести в папку паблик.
+
+.Chat {
+  display: grid;
+  grid-area: b;
+  grid-template-areas: 'a m';
+  grid-template-columns: 1fr 1fr;
+  text-align: left;
+  font-size: 20px;
+  padding: 150px 400px 0 400px;
+  background: url('./message.jpg') no-repeat bottom 100px right 200px;
+
+  .Title {
+    font-size: 30px;
+    font-weight: bold;
+    color: orangered;
+    padding-bottom: 50px;
+  }
+
+  .Articles {
+    grid-area: a;
+  }
+
+  .Messages {
+    grid-area: m;
+  }
+
+  button {
+    width: 150px;
+    margin-left: 30px;
+    margin-top: 50px;
+  }
+
+}
+

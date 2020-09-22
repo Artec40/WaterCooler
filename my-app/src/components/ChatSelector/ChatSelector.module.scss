@@ -1,0 +1,34 @@
+//todo Выравнивание картинок и текста сделано на скорую руку, по-хорошему должен подготовить изображения в фотошопе, а потом их использовать.
+
+.ChatSelector {
+  display: grid;
+  grid-area: b;
+  grid-template-areas: 'bc cc';
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  padding: 0 400px 0 400px;
+  font-size: 30px;
+  font-weight: bold;
+  color: orangered;
+  .BusinessChat {
+    grid-area: bc;
+    img {
+      width: 550px;
+    }
+  }
+  .CasualChat {
+    grid-area: cc;
+    img {
+      padding-top: 89px;
+      width: 430px;
+      padding-bottom: 22px;
+    }
+  }
+  .BusinessChatText{
+    padding-left: 120px;
+  }
+  .CasualChatText{
+    padding-left: 50px;
+  }
+}
