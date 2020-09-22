@@ -1,0 +1,14 @@
+.UserProfile {
+    display: grid;
+    grid-area: b;
+    grid-template-areas: 'p d';
+    grid-template-columns: 1fr 1fr
+}
+
+.Photo {
+    grid-area: p;
+}
+
+.Description {
+    grid-area: d;
+}

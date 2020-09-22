@@ -1,0 +1,14 @@
+.ChatSelector {
+    display: grid;
+    grid-area: b;
+    grid-template-areas: 'bc cc';
+    grid-template-columns: 1fr 1fr
+}
+
+.BusinessChat {
+    grid-area: bc;
+}
+
+.CasualChat {
+    grid-area: cc;
+}
