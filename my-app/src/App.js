@@ -4,7 +4,7 @@ import store from './redux/redux-store'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import HomePageContainer from './components/HomePage/HomePageContainer'
-import Header from './components/Header/Header'
+import HeaderContainer from './components/Header/HeaderContainer'
 import ChatSelectorContainer from './components/ChatSelector/ChatSelectorContainer'
 import ChatContainer from './components/Chat/ChatContainer'
 import UserProfileContainer from './components/UserProfile/UserProfileContainer'
@@ -12,7 +12,7 @@ import UserProfileContainer from './components/UserProfile/UserProfileContainer'
 function App() {
     return (
         <div className="App">
-            <Header/>
+            <HeaderContainer/>
             <Switch>
                 <Route path={'/ChatSelector'} render={() => <ChatSelectorContainer/>}/>
                 <Route path={'/businessChat'} render={() => <ChatContainer/>}/>
