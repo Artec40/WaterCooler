@@ -1,12 +1,12 @@
 import React from 'react'
 import s from './Chat.module.scss'
-import Articles from './Articles/Articles'
-import Messages from './Messages/Messages'
+import ArticlesContainer from './Articles/ArticlesContainer'
+import MessagesContainer from './Messages/MessagesContainer'
 
 const Chat = () => {
     return <div className={s.Chat}>
-        <Articles/>
-        <Messages/>
+        <ArticlesContainer/>
+        <MessagesContainer/>
     </div>
 }
 

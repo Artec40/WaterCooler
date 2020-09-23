@@ -15,12 +15,10 @@ function App() {
             <HeaderContainer/>
             <Switch>
                 <Route path={'/ChatSelector'} render={() => <ChatSelectorContainer/>}/>
-                <Route path={'/businessChat'} render={() => <ChatContainer/>}/>
-                <Route path={'/casualChat'} render={() => <ChatContainer/>}/>
+                <Route path={'/chat/:chatType?'} render={() => <ChatContainer/>}/>
                 <Route path={'/Profile'} render={() => <UserProfileContainer/>}/>
                 <Route path={'*'} render={() => <HomePageContainer/>}/>
             </Switch>
-
         </div>
     )
 }

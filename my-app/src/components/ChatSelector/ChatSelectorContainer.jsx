@@ -7,14 +7,18 @@ class ChatSelectorContainer extends React.Component {
 
     render() {
         return this.props.isUserAuthorised
-            ? <ChatSelector/>
+            ? <ChatSelector
+                businessChat={this.props.businessChat}
+                casualChat={this.props.casualChat}/>
             : <HomePageContainer/>
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        isUserAuthorised: state.profile.isUserAuthorised
+        isUserAuthorised: state.profile.isUserAuthorised,
+        businessChat: state.chat.chatType.business,
+        casualChat: state.chat.chatType.casual
     }
 }
 
