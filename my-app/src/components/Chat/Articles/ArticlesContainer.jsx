@@ -1,17 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Articles from './Articles'
+import { getArticles } from './../../../redux/chat-selector'
 
 class ArticlesContainer extends React.Component {
 
     render() {
-        return <Articles/>
+        debugger
+        return <Articles articles={this.props.articles}/>
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        isUserAuthorised: state.profile.isUserAuthorised
+        articles: getArticles(state, state.chat.currentChatType)
     }
 }
 

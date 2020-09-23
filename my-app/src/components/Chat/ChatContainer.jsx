@@ -17,7 +17,8 @@ class ChatContainer extends React.Component {
     render() {
         {
             return this.props.isUserAuthorised
-                ? <Chat currentChatType={this.props.currentChatType}/>
+                ? this.props.currentChatType
+                && <Chat/>
                 : <HomePageContainer/>
         }
     }
