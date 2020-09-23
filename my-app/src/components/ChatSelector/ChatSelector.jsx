@@ -1,16 +1,17 @@
 import React from 'react'
 import s from './ChatSelector.module.scss'
+import { NavLink } from 'react-router-dom'
 
 const ChatSelector = () => {
     return <div className={s.ChatSelector}>
-        <div className={s.BusinessChat}>
+        <NavLink to={'/businessChat'} className={s.BusinessChat}>
             <img src={'/business-chat.jpg'}/>
             <div className={s.BusinessChatText}>РАБОЧИЕ ВОПРОСЫ</div>
-        </div>
-        <div className={s.CasualChat}>
+        </NavLink>
+        <NavLink to={'/casualChat'} className={s.CasualChat}>
             <img src={'/casual-chat.jpg'}/>
             <div className={s.CasualChatText}>ФЛУД И ОБЩЕНИЕ</div>
-        </div>
+        </NavLink>
     </div>
 }
 

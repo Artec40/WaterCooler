@@ -19,8 +19,12 @@
   }
   .User{
     grid-area: u;
+    text-decoration: none;
+    color: white;
     img{
       width:50px;
+      border-radius: 50px;
+      border: 2px solid orangered;
     }
   }
 }

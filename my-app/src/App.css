@@ -1,6 +1,6 @@
 .App {
   display: grid;
   grid-template-areas: 'h' 'b';
-  grid-template-rows: minmax(100px,10vh) 90vh;
+  grid-template-rows: minmax(90px,10vh) 90vh;
   grid-template-columns: 1fr;
 }

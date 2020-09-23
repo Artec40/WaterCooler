@@ -1,14 +1,15 @@
 import React from 'react'
 import s from './Header.module.scss'
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
     return <div className={s.Header}>
-        <img className={s.Icon} src={'/water-cooler.png'}/>
+        <NavLink to={'/chatSelector'}><img src={'/water-cooler.png'}/></NavLink>
         <div className={s.Title}>WATERCOOLER</div>
-        <div className={s.User}>
-            <img src={'/water-cooler.png'}/>
+        <NavLink to={'/Profile'} className={s.User}>
+            <img src={'/user-icon.jpg'}/>
             Пользователь
-        </div>
+        </NavLink>
 
     </div>
 }
