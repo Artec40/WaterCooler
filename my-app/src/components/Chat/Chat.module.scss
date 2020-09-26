@@ -8,7 +8,11 @@
   text-align: left;
   font-size: 20px;
   padding: 150px 400px 0 400px;
-  background: url('./message.jpg') no-repeat bottom 100px right 200px;
+  background: url('./message.jpg') no-repeat bottom 100px right 150px;
+
+  .Message{
+    padding-bottom:20px;
+  }
 
   .Title {
     font-size: 30px;
@@ -23,6 +27,8 @@
 
   .Messages {
     grid-area: m;
+padding-right: 150px;
+    text-align: justify;
   }
 
   button {

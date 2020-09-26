@@ -1,6 +1,10 @@
 const ADD_ARTICLE = 'ADD_ARTICLE'
 const ADD_MESSAGE = 'ADD_MESSAGE'
 const SET_CURRENT_CHAT_TYPE = 'SET_CURRENT_CHAT_TYPE'
+const SET_CURRENT_ARTICLE = 'SET_CURRENT_ARTICLE'
+const SET_CURRENT_MESSAGES_BY_ARTICLE = 'SET_CURRENT_MESSAGES_BY_ARTICLE'
+const CLEAN_CURRENT_CHAT_DATA = 'CLEAN_CURRENT_CHAT_DATA'
+
 
 let initialState = {
     businessChat: [
@@ -57,54 +61,47 @@ let initialState = {
         business: 'business',
         casual: 'casual'
     },
-    currentChatType: ''
+    currentChatType: '',
+    currentArticle: '',
+    currentMessages: []
 }
 
 const chatReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_ARTICLE: {
-            if (action.chatType === state.chatType.business)
-                return {
-                    ...state,
-                    ...state.businessChat.push({articles: action.article, messages: []}),
-                }
-            if (action.chatType === state.chatType.casual)
-                return {
-                    ...state,
-                    ...state.casualChat.push({articles: action.article, messages: []}),
-                }
-            else
-                return {
-                    ...state
-                }
-        }
-        case ADD_MESSAGE: {
-            if (action.chatType === state.chatType.business) {
-                let index = state.businessChat.indexOf(action.article)
-                return {
-                    ...state,
-                    ...state.businessChat,
-                    ...state.businessChat[index],
-                    ...state.businessChat[index].messages.push({author: action.author, message: action.message})
-                }
-            }
-            if (action.chatType === state.chatType.casual) {
-                let index = state.casualChat.indexOf(action.article)
-                return {
-                    ...state,
-                    ...state.casualChat,
-                    ...state.casualChat[index],
-                    ...state.casualChat[index].messages.push({author: action.author, message: action.message})
-                }
-            }
-            else
-                return {
-                    ...state
-                }
-        }
+
         case SET_CURRENT_CHAT_TYPE: {
             return {
                 ...state, currentChatType: action.chatType
+            }
+        }
+        case SET_CURRENT_ARTICLE: {
+            return {
+                ...state, currentArticle: action.article
+            }
+        }
+        case SET_CURRENT_MESSAGES_BY_ARTICLE: {
+            if (action.chatType === state.chatType.business) {
+                let correspondence = state.businessChat.filter(c => c.article === action.article)
+                if (correspondence.length !== 0)
+                    return {
+                        ...state, currentMessages: correspondence[0].messages
+                    }
+            }
+            if (action.chatType === state.chatType.casual) {
+                let correspondence = state.casualChat.filter(c => c.article === action.article)
+                if (correspondence.length !== 0)
+                    return {
+                        ...state, currentMessages: correspondence[0].messages
+                    }
+            }
+            else
+                return {
+                    ...state
+                }
+        }
+        case CLEAN_CURRENT_CHAT_DATA: {
+            return {
+                ...state, currentArticle: '', currentMessages: []
             }
         }
         default:
@@ -112,9 +109,14 @@ const chatReducer = (state = initialState, action) => {
     }
 }
 
-export const AddArticle = (chatType, article) => ({type: ADD_ARTICLE, chatType, article})
-export const AddMessage = (chatType, author, message) => ({type: ADD_MESSAGE, chatType, author, message})
+
+
 export const setCurrentChatType = (chatType) => ({type: SET_CURRENT_CHAT_TYPE, chatType})
+export const setCurrentArticle = (article) => ({type: SET_CURRENT_ARTICLE, article})
+export const setCurrentMessagesByArticle = (chatType, article) => ({
+    type: SET_CURRENT_MESSAGES_BY_ARTICLE, chatType, article
+})
+export const cleanCurrentChatData = () => ({type: CLEAN_CURRENT_CHAT_DATA})
 
 
 export default chatReducer

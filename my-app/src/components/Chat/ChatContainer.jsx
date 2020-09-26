@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Chat from './Chat'
 import HomePageContainer from './../HomePage/HomePageContainer'
-import { getArticles, getMessages } from './../../redux/chat-selector'
-import { setCurrentChatType } from '../../redux/chat-reducer'
+import { setCurrentChatType, cleanCurrentChatData } from '../../redux/chat-reducer'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 
@@ -12,6 +11,7 @@ class ChatContainer extends React.Component {
     componentDidMount() {
         let chatType = this.props.match.params.chatType
         this.props.setCurrentChatType(chatType)
+        this.props.cleanCurrentChatData()
     }
 
     render() {
@@ -33,4 +33,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default compose(connect(mapStateToProps, {setCurrentChatType}), withRouter)(ChatContainer)
+export default compose(connect(mapStateToProps, {setCurrentChatType, cleanCurrentChatData}), withRouter)(ChatContainer)
