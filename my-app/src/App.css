@@ -3,4 +3,5 @@
   grid-template-areas: 'h' 'b';
   grid-template-rows: minmax(90px,10vh) 90vh;
   grid-template-columns: 1fr;
+  background-size: 1000px;
 }

@@ -18,7 +18,6 @@ class MessagesContainer extends React.Component {
             || this.props.businessChat !== prevProps.businessChat
             || this.props.casualChat !== prevProps.casualChat)
             this.props.setCurrentMessagesByArticle(this.props.currentChat, this.props.currentArticle)
-        console.log(this.props.messageInput)
     }
 
     render() {

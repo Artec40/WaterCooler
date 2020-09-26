@@ -60,6 +60,7 @@ const profileReducer = (state = initialState, action) => {
                     ...state, currentUser: user[0], isUserAuthorised: true
                 }
             else
+                alert('Неверные данные. Для теста попробуйте user1 user1.')
                 return {
                     ...state
                 }

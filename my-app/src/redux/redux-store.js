@@ -1,5 +1,6 @@
-import {combineReducers, createStore } from 'redux'
+import { applyMiddleware, combineReducers, createStore } from 'redux'
 import profileReducer from './profile-reducer'
+import thunkMiddleware from 'redux-thunk'
 import chatReducer from './chat-reducer'
 
 let reducers = combineReducers({
@@ -8,7 +9,7 @@ let reducers = combineReducers({
     chat: chatReducer
 })
 
-let store = createStore(reducers)
+let store = createStore(reducers, applyMiddleware(thunkMiddleware))
 
 window.store = store
 export default store
