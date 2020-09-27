@@ -9,6 +9,9 @@ export const SET_CURRENT_MESSAGES_BY_ARTICLE = 'SET_CURRENT_MESSAGES_BY_ARTICLE'
 export const CLEAN_CURRENT_CHAT_DATA = 'CLEAN_CURRENT_CHAT_DATA'
 export const DELETE_MESSAGE = 'DELETE_MESSAGE'
 export const EDIT_MESSAGE = 'EDIT_MESSAGE'
+export const ON_EDIT_MESSAGE_INPUT = ' ON_EDIT_MESSAGE_INPUT'
+export const SET_EDIT_MESSAGE_INPUT_VALUE = ' SET_EDIT_MESSAGE_INPUT_VALUE'
+
 
 export const setChats = (businessChat, casualChat) => ({type: SET_CHATS, businessChat, casualChat})
 export const addArticle = (chatType) => ({type: ADD_ARTICLE, chatType})
@@ -23,3 +26,5 @@ export const setCurrentMessagesByArticle = (chatType, article) => ({
 export const cleanCurrentChatData = () => ({type: CLEAN_CURRENT_CHAT_DATA})
 export const deleteMessage = (chatType, messageId) => ({type: DELETE_MESSAGE, chatType, messageId})
 export const editMessage = (chatType, messageId) => ({type: EDIT_MESSAGE, chatType, messageId})
+export const onEditMessageInput = (messageInput) => ({type: ON_EDIT_MESSAGE_INPUT, messageInput})
+export const setEditMessageInputValue = (messageValue) => ({type: SET_EDIT_MESSAGE_INPUT_VALUE, messageValue})

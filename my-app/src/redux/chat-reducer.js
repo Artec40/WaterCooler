@@ -9,7 +9,9 @@ import {
     SET_CURRENT_CHAT_TYPE,
     SET_CURRENT_MESSAGES_BY_ARTICLE,
     DELETE_MESSAGE,
-    EDIT_MESSAGE
+    EDIT_MESSAGE,
+    ON_EDIT_MESSAGE_INPUT,
+    SET_EDIT_MESSAGE_INPUT_VALUE
 } from './chat-action'
 import { setChats } from './chat-action'
 
@@ -25,6 +27,7 @@ let initialState = {
     currentMessages: [],
     articleInput: '',
     messageInput: '',
+    editMessageInput: ''
 }
 
 const chatReducer = (state = initialState, action) => {
@@ -128,7 +131,6 @@ const chatReducer = (state = initialState, action) => {
             }
         }
         case DELETE_MESSAGE: {
-            debugger
             if (action.chatType === state.chatType.business) {
                 return {
                     ...state,
@@ -142,13 +144,69 @@ const chatReducer = (state = initialState, action) => {
             }
             if (action.chatType === state.chatType.casual) {
                 return {
-                    ...state
+                    ...state,
+                    casualChat: [...state.casualChat.map(c => c.article === state.currentArticle
+                        ? {
+                            article: state.currentArticle,
+                            messages: [...c.messages.filter((m, index) => index !== action.messageId)]
+                        }
+                        : c)],
                 }
             }
             else
                 return {
                     ...state
                 }
+        }
+        case ON_EDIT_MESSAGE_INPUT: {
+            return {
+                ...state, editMessageInput: action.messageInput
+            }
+        }
+        case EDIT_MESSAGE: {
+            debugger
+            if (action.chatType === state.chatType.business) {
+                return {
+                    ...state,
+                    businessChat: [...state.businessChat.map(c => c.article === state.currentArticle
+                        ? {
+                            article: state.currentArticle,
+                            messages: [...c.messages.map((m, index) => index === action.messageId
+                                ? {
+                                    ...m,
+                                    message: state.editMessageInput
+                                }
+                                : m)]
+                        }
+                        : c)]
+                }
+            }
+            if (action.chatType === state.chatType.casual) {
+                return {
+                    ...state,
+                    casualChat: [...state.casualChat.map(c => c.article === state.currentArticle
+                        ? {
+                            article: state.currentArticle,
+                            messages: [...c.messages.map((m, index) => index === action.messageId
+                                ? {
+                                    ...m,
+                                    message: state.editMessageInput
+                                }
+                                : m)]
+                        }
+                        : c)]
+                }
+            }
+            else
+                return {
+                    ...state
+                }
+        }
+        case SET_EDIT_MESSAGE_INPUT_VALUE:{
+            debugger
+            return{
+                ...state, editMessageInput: action.messageValue
+            }
         }
         default:
             return state
