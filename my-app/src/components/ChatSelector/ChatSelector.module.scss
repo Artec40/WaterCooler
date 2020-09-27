@@ -7,31 +7,122 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   text-align: center;
-  padding: 0 450px 0 350px;
-  font-size: 30px;
+
   font-weight: bold;
   .BusinessChat {
     grid-area: bc;
     text-decoration: none;
     color: orangered;
-    img {
-      width: 550px;
-    }
+
   }
   .CasualChat {
     grid-area: cc;
     text-decoration: none;
     color: orangered;
-    img {
-      padding-top: 89px;
-      width: 430px;
-      padding-bottom: 22px;
+
+  }
+}
+
+@media (max-width: 1920px) {
+  .ChatSelector {
+    padding: 0 450px 0 350px;
+    font-size: 30px;
+    .BusinessChatText {
+      padding-left: 120px;
+    }
+    .CasualChatText {
+      padding-left: 50px;
+    }
+    .BusinessChat {
+      img {
+        width: 550px;
+      }
+    }
+    .CasualChat {
+      img {
+        padding-top: 89px;
+        width: 430px;
+        padding-bottom: 22px;
+      }
     }
   }
-  .BusinessChatText{
-    padding-left: 120px;
+
+}
+
+@media (max-width: 1680px) {
+  .ChatSelector {
+    padding: 0 400px 0 300px;
+    font-size: 28px;
+    .BusinessChat {
+      img {
+        width: 495px;
+      }
+    }
+    .CasualChat {
+      img {
+        padding-top: 79px;
+        width: 387px;
+        padding-bottom: 22px;
+      }
+    }
   }
-  .CasualChatText{
-    padding-left: 50px;
+
+}
+
+@media (max-width: 1440px) {
+  .ChatSelector {
+    padding: 0 200px 0 100px;
+    font-size: 26px;
+    .BusinessChat {
+      img {
+        width: 440px;
+      }
+    }
+    .CasualChat {
+      img {
+        padding-top: 69px;
+        width: 344px;
+        padding-bottom: 12px;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1024px) {
+  .ChatSelector {
+    padding: 0 0 0 0;
+    font-size: 24px;
+    .BusinessChat {
+      img {
+        width: 385px;
+      }
+    }
+    .CasualChat {
+      img {
+        padding-top: 59px;
+        width: 301px;
+        padding-bottom: 12px;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+  .ChatSelector {
+    font-size: 20px;
+    .BusinessChat {
+      img {
+        width: 300px;
+      }
+    }
+    .CasualChat {
+      img {
+        padding-top: 25px;
+        width: 238px;
+        padding-bottom: 22px;
+      }
+    }
   }
 }

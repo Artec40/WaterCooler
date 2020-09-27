@@ -123,6 +123,7 @@ const chatReducer = (state = initialState, action) => {
                     return {
                         ...state, currentMessages: correspondence[0].messages
                     }
+                else return {...state}
             }
             if (action.chatType === state.chatType.casual) {
                 let correspondence = state.casualChat.filter(c => c.article === action.article)
