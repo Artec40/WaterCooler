@@ -17,7 +17,21 @@
     padding-bottom: 30px;
   }
 
-
+  button {
+    width: 208px;
+    margin-top: 15px;
+    color: #325773;
+    background: #bacbdb;
+    padding: .7em 1.5em;
+    outline: none;
+    border: none;
+  }
+  button:hover {
+    background: #77cbd2;
+  }
+  button:active {
+    background: #325773;
+  }
 }
 
 @media (max-width: 1920px) {

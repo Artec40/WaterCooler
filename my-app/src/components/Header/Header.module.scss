@@ -24,9 +24,22 @@
       border: 2px solid orangered;
     }
   }
-  button{
-    margin-left:5px;
+  button {
+    margin-left: 5px;
+    color: #325773;
+    background: #bacbdb;
+    outline: none;
+    border-width: 1px;
+    border-color:#325773;
+    border-radius: 50%
   }
+  button:hover {
+    background: #77cbd2;
+  }
+  button:active {
+    background: #325773;
+  }
+
 }
 
 @media (max-width: 1920px) {
