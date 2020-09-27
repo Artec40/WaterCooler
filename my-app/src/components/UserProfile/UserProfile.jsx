@@ -5,7 +5,7 @@ const UserProfile = ({photo, name, status, post}) => {
     return <div className={s.UserProfile}>
         <div className={s.Photo}>
             <div>
-                <img src={photo === '' ? '/user-icon.jpg' : photo}/>
+                <img src={photo === '' ? '/user-icon.jpg' : photo} alt={'for avatar'}/>
             </div>
             <button>Сменить аватар</button>
         </div>

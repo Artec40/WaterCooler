@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 const HomePage = ({inputName, inputPassword, onInputNameChange, onInputPasswordChange, setUserData}) => {
 
     return <div className={s.HomePage}>
-        <div><img src={'/home.jpg'}/></div>
+        <div><img src={'/home.jpg'} alt={'for homePage'}/></div>
         <div>Введите логин</div>
         <input onChange={(e) => {onInputNameChange(e.target.value)}}
                type={'text'}

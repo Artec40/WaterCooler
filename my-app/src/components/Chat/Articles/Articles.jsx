@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 const Articles = ({articles, setCurrentArticle, articleInput, addArticle, onChangeArticleInput}) => {
 
-    let chatArticles = articles.map(a => <NavLink onClick={()=>{setCurrentArticle(a)}}
+    let chatArticles = articles.map(a => <NavLink key={articles.indexOf(a)} onClick={()=>{setCurrentArticle(a)}}
                                                   to={'/chat/business/article/' + articles.indexOf(a)}>
         <div>{a}</div>
     </NavLink>)

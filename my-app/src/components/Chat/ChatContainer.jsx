@@ -15,12 +15,10 @@ class ChatContainer extends React.Component {
     }
 
     render() {
-        {
-            return this.props.isUserAuthorised
-                ? this.props.currentChatType
-                && <Chat/>
-                : <HomePageContainer/>
-        }
+        return this.props.isUserAuthorised
+            ? this.props.currentChatType
+            && <Chat/>
+            : <HomePageContainer/>
     }
 }
 

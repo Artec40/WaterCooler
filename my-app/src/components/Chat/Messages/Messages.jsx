@@ -30,17 +30,17 @@ const Messages = ({
     let chatMessages = messages.map(m => m.author === author
         ? editField===m.id
             ?
-            <div className={s.Message}><b>{m.author}</b>: <input onChange={(e) => onEditMessageInput(e.target.value)}
+            <div key={m.id} className={s.Message}><b>{m.author}</b>: <input onChange={(e) => onEditMessageInput(e.target.value)}
                                                                  value={editMessageInput}
                                                                  type={'text'}/>
                 <button onClick={() => finishEdit(m.id)} className={s.EditButton}>С</button>
             </div>
-            : <div className={s.Message}><b>{m.author}</b>: {m.message}
+            : <div key={m.id} className={s.Message}><b>{m.author}</b>: {m.message}
                 <button onClick={() => deleteMessage(m.id)} className={s.EditButton}>У</button>
                 <button onClick={() => startEdit(m.id, m.message)} className={s.EditButton}>Р</button>
             </div>
 
-        : <div className={s.Message}><b>{m.author}</b>: {m.message}</div>)
+        : <div key={m.id} className={s.Message}><b>{m.author}</b>: {m.message}</div>)
 
     return <div className={s.Messages}>
         <div className={s.Title}>{article}</div>

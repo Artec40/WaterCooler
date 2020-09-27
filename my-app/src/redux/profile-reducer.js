@@ -1,6 +1,9 @@
-import { CHANGE_INPUT_NAME,
+import {
+    CHANGE_INPUT_NAME,
     CHANGE_INPUT_PASSWORD,
-    SET_USER_DATA } from './profile-action'
+    SET_USER_DATA,
+    LOGOUT
+} from './profile-action'
 
 let initialState = {
     users: [
@@ -61,9 +64,13 @@ const profileReducer = (state = initialState, action) => {
                 }
             else
                 alert('Неверные данные. Для теста попробуйте user1 user1.')
-                return {
-                    ...state
-                }
+            return {
+                ...state
+            }
+        case LOGOUT:
+            return {
+                ...state, currentUser: null, isUserAuthorised: false, inputName: '', inputPassword: ''
+            }
         default:
             return state
     }

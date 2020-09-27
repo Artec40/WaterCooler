@@ -131,10 +131,9 @@ const chatReducer = (state = initialState, action) => {
                         ...state, currentMessages: correspondence[0].messages
                     }
             }
-            else
-                return {
-                    ...state
-                }
+            return {
+                ...state
+            }
         }
         case CLEAN_CURRENT_CHAT_DATA: {
             return {
