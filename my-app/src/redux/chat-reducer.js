@@ -1,13 +1,17 @@
-const SET_CHATS = 'SET_CHATS'
-const ADD_ARTICLE = 'ADD_ARTICLE'
-const ON_CHANGE_ARTICLE_INPUT = 'ON_CHANGE_ARTICLE_INPUT'
-const ADD_MESSAGE = 'ADD_MESSAGE'
-const ON_CHANGE_MESSAGE_INPUT = 'ON_CHANGE_MESSAGE_INPUT'
-const SET_CURRENT_CHAT_TYPE = 'SET_CURRENT_CHAT_TYPE'
-const SET_CURRENT_ARTICLE = 'SET_CURRENT_ARTICLE'
-const SET_CURRENT_MESSAGES_BY_ARTICLE = 'SET_CURRENT_MESSAGES_BY_ARTICLE'
-const CLEAN_CURRENT_CHAT_DATA = 'CLEAN_CURRENT_CHAT_DATA'
-
+import {
+    SET_CHATS,
+    ADD_ARTICLE,
+    ADD_MESSAGE,
+    CLEAN_CURRENT_CHAT_DATA,
+    ON_CHANGE_ARTICLE_INPUT,
+    ON_CHANGE_MESSAGE_INPUT,
+    SET_CURRENT_ARTICLE,
+    SET_CURRENT_CHAT_TYPE,
+    SET_CURRENT_MESSAGES_BY_ARTICLE,
+    DELETE_MESSAGE,
+    EDIT_MESSAGE
+} from './chat-action'
+import { setChats } from './chat-action'
 
 let initialState = {
     businessChat: [],
@@ -123,22 +127,33 @@ const chatReducer = (state = initialState, action) => {
                 ...state, currentArticle: '', currentMessages: []
             }
         }
+        case DELETE_MESSAGE: {
+            debugger
+            if (action.chatType === state.chatType.business) {
+                return {
+                    ...state,
+                    businessChat: [...state.businessChat.map(c => c.article === state.currentArticle
+                        ? {
+                            article: state.currentArticle,
+                            messages: [...c.messages.filter((m, index) => index !== action.messageId)]
+                        }
+                        : c)],
+                }
+            }
+            if (action.chatType === state.chatType.casual) {
+                return {
+                    ...state
+                }
+            }
+            else
+                return {
+                    ...state
+                }
+        }
         default:
             return state
     }
 }
-
-export const setChats = (businessChat, casualChat) => ({type: SET_CHATS, businessChat, casualChat})
-export const addArticle = (chatType) => ({type: ADD_ARTICLE, chatType})
-export const onChangeArticleInput = (articleInput) => ({type: ON_CHANGE_ARTICLE_INPUT, articleInput})
-export const addMessage = (chatType, author) => ({type: ADD_MESSAGE, chatType, author})
-export const onChangeMessageInput = (messageInput) => ({type: ON_CHANGE_MESSAGE_INPUT, messageInput})
-export const setCurrentChatType = (chatType) => ({type: SET_CURRENT_CHAT_TYPE, chatType})
-export const setCurrentArticle = (article) => ({type: SET_CURRENT_ARTICLE, article})
-export const setCurrentMessagesByArticle = (chatType, article) => ({
-    type: SET_CURRENT_MESSAGES_BY_ARTICLE, chatType, article
-})
-export const cleanCurrentChatData = () => ({type: CLEAN_CURRENT_CHAT_DATA})
 
 export const getChats = () => async (dispatch) => {
     let json = await require('./../chats.json')

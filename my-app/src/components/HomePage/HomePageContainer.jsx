@@ -1,7 +1,7 @@
 import React from 'react'
 import HomePage from './HomePage'
 import { connect } from 'react-redux'
-import { onInputNameChange, onInputPasswordChange, setUserData} from '../../redux/profile-reducer'
+import { onInputNameChange, onInputPasswordChange, setUserData} from '../../redux/profile-action'
 import { getChats } from '../../redux/chat-reducer'
 
 class HomePageContainer extends React.Component {

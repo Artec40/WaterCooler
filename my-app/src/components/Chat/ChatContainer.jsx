@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Chat from './Chat'
 import HomePageContainer from './../HomePage/HomePageContainer'
-import { setCurrentChatType, cleanCurrentChatData } from '../../redux/chat-reducer'
+import { setCurrentChatType, cleanCurrentChatData } from '../../redux/chat-action'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 

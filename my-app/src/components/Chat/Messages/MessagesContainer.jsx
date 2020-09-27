@@ -4,8 +4,9 @@ import Messages from './Messages'
 import {
     setCurrentMessagesByArticle,
     addMessage,
-    onChangeMessageInput
-} from './../../../redux/chat-reducer'
+    onChangeMessageInput,
+    deleteMessage
+} from './../../../redux/chat-action'
 
 class MessagesContainer extends React.Component {
 
@@ -27,7 +28,9 @@ class MessagesContainer extends React.Component {
                          messages={this.props.currentMessages}
                          messageInput={this.props.messageInput}
                          addMessage={() => this.props.addMessage(this.props.currentChat, this.props.author)}
-                         onChangeMessageInput={this.props.onChangeMessageInput}/>
+                         onChangeMessageInput={this.props.onChangeMessageInput}
+                         author={this.props.author}
+                         deleteMessage={(messageId)=>this.props.deleteMessage(this.props.currentChat, messageId)}/>
     }
 }
 
@@ -46,5 +49,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     setCurrentMessagesByArticle,
     addMessage,
-    onChangeMessageInput
+    onChangeMessageInput,
+    deleteMessage
 })(MessagesContainer)

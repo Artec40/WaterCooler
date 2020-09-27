@@ -8,7 +8,7 @@
   text-align: left;
   font-size: 20px;
   padding: 150px 400px 0 400px;
-  background: url('./message.jpg') no-repeat bottom 100px right 150px;
+  background: url('/message.jpg') no-repeat bottom 100px right 150px;
 
   .Message{
     padding-bottom:20px;
@@ -37,5 +37,9 @@ padding-right: 150px;
     margin-top: 50px;
   }
 
+  .EditButton {
+width:30px;
+    margin: 0 0 0 5px;
+  }
 }
 

@@ -1,6 +1,6 @@
-const SET_USER_DATA = 'SET_USER_DATA'
-const CHANGE_INPUT_NAME = 'CHANGE_INPUT_NAME'
-const CHANGE_INPUT_PASSWORD = 'CHANGE_INPUT_PASSWORD'
+import { CHANGE_INPUT_NAME,
+    CHANGE_INPUT_PASSWORD,
+    SET_USER_DATA } from './profile-action'
 
 let initialState = {
     users: [
@@ -68,9 +68,5 @@ const profileReducer = (state = initialState, action) => {
             return state
     }
 }
-
-export const setUserData = () => ({type: SET_USER_DATA})
-export const onInputNameChange = (name) => ({type: CHANGE_INPUT_NAME, name})
-export const onInputPasswordChange = (password) => ({type: CHANGE_INPUT_PASSWORD, password})
 
 export default profileReducer

@@ -7,7 +7,7 @@ import {
     setCurrentMessagesByArticle,
     addArticle,
     onChangeArticleInput
-} from './../../../redux/chat-reducer'
+} from './../../../redux/chat-action'
 
 class ArticlesContainer extends React.Component {
 
