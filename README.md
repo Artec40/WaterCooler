@@ -10,3 +10,4 @@
 4)UserProfile - отвечает за отрисовку страницы пользователя (http://localhost:3000/Profile).<br />
 
 Архитектура приложения предоставлена в виде схемы по ссылке https://app.diagrams.net/#G1qPAFxDRM0RmhgokHq_amMQL4SpUZATkT
+или по директори my-app/public/app-structure.jpg
