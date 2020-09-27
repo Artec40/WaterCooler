@@ -44,7 +44,9 @@ const Messages = ({
 
     return <div className={s.Messages}>
         <div className={s.Title}>{article}</div>
-        {chatMessages}
+        <div id={'1'} className={s.Correspondence}>
+            {chatMessages}
+        </div>
         <input onChange={(e) => onChangeMessageInput(e.target.value)}
                placeholder={'Введите сообщение'}
                value={messageInput}

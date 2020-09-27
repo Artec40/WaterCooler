@@ -4,7 +4,7 @@
   display: grid;
   grid-area: b;
   grid-template-areas: 'a m';
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 3fr;
   text-align: left;
   font-size: 20px;
   padding: 150px 400px 0 400px;
@@ -31,6 +31,11 @@ padding-right: 150px;
     text-align: justify;
   }
 
+  .Correspondence{
+    overflow-y: scroll;
+    height:400px;
+    padding-right:10px;
+  }
   button {
     width: 150px;
     margin-left: 30px;

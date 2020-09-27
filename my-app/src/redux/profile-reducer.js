@@ -2,6 +2,7 @@ import {
     CHANGE_INPUT_NAME,
     CHANGE_INPUT_PASSWORD,
     SET_USER_DATA,
+    SET_USER_DATA_FROM_COOKIES,
     LOGOUT
 } from './profile-action'
 
@@ -58,16 +59,33 @@ const profileReducer = (state = initialState, action) => {
             }
         case SET_USER_DATA:
             let user = state.users.filter(u => u.account === state.inputName && u.password === state.inputPassword)
-            if (user.length !== 0)
+            if (user.length !== 0) {
+                window.localStorage.userName = state.inputName
+                window.localStorage.userPassword = state.inputPassword
                 return {
-                    ...state, currentUser: user[0], isUserAuthorised: true
+                    ...state, currentUser: user[0], isUserAuthorised: true,
                 }
+            }
             else
                 alert('Неверные данные. Для теста попробуйте user1 user1.')
             return {
                 ...state
             }
+        case SET_USER_DATA_FROM_COOKIES:
+            let userFromCookies = state.users.filter(u => u.account === window.localStorage.userName
+                && u.password === window.localStorage.userPassword)
+            if (userFromCookies.length !== 0) {
+                return {
+                    ...state, currentUser: userFromCookies[0], isUserAuthorised: true,
+                }
+            }
+            else
+                return {
+                    ...state
+                }
         case LOGOUT:
+            window.localStorage.removeItem('userName')
+            window.localStorage.removeItem('userPassword')
             return {
                 ...state, currentUser: null, isUserAuthorised: false, inputName: '', inputPassword: ''
             }
