@@ -14,6 +14,7 @@ import {
     SET_EDIT_MESSAGE_INPUT_VALUE
 } from './chat-action'
 import { setChats } from './chat-action'
+import { generateUUID } from '../guidCreater'
 
 let initialState = {
     businessChat: [],
@@ -67,7 +68,12 @@ const chatReducer = (state = initialState, action) => {
                     businessChat: [...state.businessChat.map(c => c.article === state.currentArticle
                         ? {
                             article: state.currentArticle,
-                            messages: [...c.messages, {author: action.author, message: state.messageInput}]
+                            messages: [...c.messages,
+                                {
+                                    id: generateUUID(),
+                                    author: action.author,
+                                    message: state.messageInput
+                                }]
                         }
                         : c)],
                     messageInput: ''
@@ -79,7 +85,12 @@ const chatReducer = (state = initialState, action) => {
                     casualChat: [...state.casualChat.map(c => c.article === state.currentArticle
                         ? {
                             article: state.currentArticle,
-                            messages: [...c.messages, {author: action.author, message: state.messageInput}]
+                            messages: [...c.messages,
+                                {
+                                    id: generateUUID(),
+                                    author: action.author,
+                                    message: state.messageInput
+                                }]
                         }
                         : c)],
                     messageInput: ''
@@ -137,7 +148,7 @@ const chatReducer = (state = initialState, action) => {
                     businessChat: [...state.businessChat.map(c => c.article === state.currentArticle
                         ? {
                             article: state.currentArticle,
-                            messages: [...c.messages.filter((m, index) => index !== action.messageId)]
+                            messages: [...c.messages.filter(m => m.id !== action.messageId)]
                         }
                         : c)],
                 }
@@ -148,7 +159,7 @@ const chatReducer = (state = initialState, action) => {
                     casualChat: [...state.casualChat.map(c => c.article === state.currentArticle
                         ? {
                             article: state.currentArticle,
-                            messages: [...c.messages.filter((m, index) => index !== action.messageId)]
+                            messages: [...c.messages.filter(m => m.id !== action.messageId)]
                         }
                         : c)],
                 }
@@ -164,14 +175,13 @@ const chatReducer = (state = initialState, action) => {
             }
         }
         case EDIT_MESSAGE: {
-            debugger
             if (action.chatType === state.chatType.business) {
                 return {
                     ...state,
                     businessChat: [...state.businessChat.map(c => c.article === state.currentArticle
                         ? {
                             article: state.currentArticle,
-                            messages: [...c.messages.map((m, index) => index === action.messageId
+                            messages: [...c.messages.map(m => m.id === action.messageId
                                 ? {
                                     ...m,
                                     message: state.editMessageInput
@@ -187,7 +197,7 @@ const chatReducer = (state = initialState, action) => {
                     casualChat: [...state.casualChat.map(c => c.article === state.currentArticle
                         ? {
                             article: state.currentArticle,
-                            messages: [...c.messages.map((m, index) => index === action.messageId
+                            messages: [...c.messages.map((m) => m.id === action.messageId
                                 ? {
                                     ...m,
                                     message: state.editMessageInput
@@ -202,9 +212,8 @@ const chatReducer = (state = initialState, action) => {
                     ...state
                 }
         }
-        case SET_EDIT_MESSAGE_INPUT_VALUE:{
-            debugger
-            return{
+        case SET_EDIT_MESSAGE_INPUT_VALUE: {
+            return {
                 ...state, editMessageInput: action.messageValue
             }
         }

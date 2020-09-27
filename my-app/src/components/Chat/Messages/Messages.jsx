@@ -15,30 +15,29 @@ const Messages = ({
                       setEditMessageInputValue
                   }) => {
 
-    let [editMode, setEditMode] = useState(false)
+    let [editField, setEditField] = useState('')
 
-    let finishEdit = (messageIndex) =>{
+    let finishEdit = (messageIndex) => {
         editMessage(messageIndex)
-        setEditMode(false)
+        setEditField('')
     }
 
-    let startEdit =(messageValue)=>{
+    let startEdit = (messageId, messageValue) => {
         setEditMessageInputValue(messageValue)
-        setEditMode(true)
+        setEditField(messageId)
     }
 
     let chatMessages = messages.map(m => m.author === author
-        ? editMode
+        ? editField===m.id
             ?
             <div className={s.Message}><b>{m.author}</b>: <input onChange={(e) => onEditMessageInput(e.target.value)}
                                                                  value={editMessageInput}
                                                                  type={'text'}/>
-                <button onClick={() => finishEdit(messages.indexOf(m))} className={s.EditButton}>С</button>
+                <button onClick={() => finishEdit(m.id)} className={s.EditButton}>С</button>
             </div>
-
             : <div className={s.Message}><b>{m.author}</b>: {m.message}
-                <button onClick={() => deleteMessage(messages.indexOf(m))} className={s.EditButton}>У</button>
-                <button onClick={() => startEdit(m.message)} className={s.EditButton}>Р</button>
+                <button onClick={() => deleteMessage(m.id)} className={s.EditButton}>У</button>
+                <button onClick={() => startEdit(m.id, m.message)} className={s.EditButton}>Р</button>
             </div>
 
         : <div className={s.Message}><b>{m.author}</b>: {m.message}</div>)
