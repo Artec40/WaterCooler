@@ -21,7 +21,11 @@
     background: #325773;
   }
 
-  input {
-    width: 200px;
+  input{
+    width: 208px;
+    padding: 4px 0 4px 0;
+    border-width: 1px;
+    border-color:#325773;
+    outline: none;
   }
 }
